@@ -7,12 +7,9 @@
 
 #include <Commands/Command.h>
 
-#include "Subsystems/Catcher.h"
 #include "OI.h"
-#include "Subsystems/DriveTrain.h"
-#include "Subsystems/Arm.h"
-#include "Subsystems/Camera.h"
-#include "Subsystems/Lift.h"
+#include "Subsystems/Piston.h"
+
 
 
 /**
@@ -21,7 +18,7 @@
  * subsystem elsewhere in your code in your code use
  * CommandBase::exampleSubsystem
  */
-class CommandBase: public frc::Command {
+class CommandBase: public Command {
 public:
 	CommandBase(const std::string& name);
 	CommandBase() = default;
@@ -30,11 +27,8 @@ public:
 	// Create a single static instance of all of your subsystems
 
 	static std::unique_ptr<OI> oi;
-	static Camera* camera;
-	static Arm* arm;
-	static DriveTrain* drive;
-	static Catcher* catcher;
-	static Lift* lift;
+	static Piston* piston;
+
 
 };
 

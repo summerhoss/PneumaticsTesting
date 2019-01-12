@@ -35,8 +35,6 @@ constexpr double Cross_MidL = 54 + 16.75 - 12;
 constexpr double Cross_MidR = 54 - 16.75 + 12;
 
 
-
-
 // If you are using multiple modules, make sure to define both the port
 // number and the module. For example you with a rangefinder:
 // constexpr int RANGE_FINDER_PORT = 1;

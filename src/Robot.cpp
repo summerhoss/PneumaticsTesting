@@ -3,31 +3,19 @@
 
 #include <Commands/Command.h>
 #include <Commands/Scheduler.h>
+
 #include <IterativeRobot.h>
 #include <LiveWindow/LiveWindow.h>
 #include <SmartDashboard/SendableChooser.h>
 #include <SmartDashboard/SmartDashboard.h>
+#include "Commands/Piston_Extend.h"
+#include "Commands/Piston_Retract.h"
+#include "Commands/Piston_Off.h"
 #include <iostream>
 using namespace std;
 #include "CommandBase.h"
-#include "Commands/TankDrive.h"
-#include "Commands/DriveForward.h"
-#include "Commands/Turn.h"
-#include "Commands/LSwitch.h"
-#include "Commands/RSwitch.h"
-#include "Commands/LScale.h"
-#include "Commands/RScale.h"
-#include "Commands/LScaleSwitch.h"
-#include "Commands/LSwitchScale.h"
-#include "Commands/Mid.h"
-#include "Commands/RSwitchScale.h"
-#include "Commands/RScaleSwitch.h"
-#include "Commands/Auto_Right_Switch.h"
-#include "Commands/Auto_Mid_LSwitch.h"
-#include "Commands/Auto_Mid_RSwitch.h"
-#include "Commands/Test_Mechs.h"
-#include "Commands/Auto_Left_Switch.h"
-#include "Commands/Auto_Left_LScale.h"
+
+
 
 
 class Robot: public frc::IterativeRobot {
@@ -43,43 +31,9 @@ public:
 				// these are equivalent:  std::shared_ptr<Turn>(new Turn(90.)
 				//                        std::make_shared<Turn>(90.)
 				//chooser.AddDefault("Default Auto - DriveForward", std::shared_ptr<DriveForward>(new DriveForward(100)));
-				chooser.AddDefault("Default", std::shared_ptr<DriveForward>(new DriveForward(100)));
-
-				//mid
-				chooser.AddObject("Mid", std::shared_ptr<Mid>(new Mid(s)));
-				chooser.AddObject("RightMid", std::shared_ptr<Auto_Mid_RSwitch>(new Auto_Mid_RSwitch()));
-				chooser.AddObject("LeftMid", std::shared_ptr<Auto_Mid_LSwitch>(new Auto_Mid_LSwitch()));
-
-				//left
-				chooser.AddObject("Prioritize Scale Left", std::shared_ptr<LScaleSwitch>(new LScaleSwitch(s)));
-				chooser.AddObject("Prioritize Switch Left", std::shared_ptr<LSwitchScale>(new LSwitchScale(s)));
-				chooser.AddObject("Switch Left", std::shared_ptr<LSwitch>(new LSwitch("LLL")));
-				chooser.AddObject("Scale Left", std::shared_ptr<LScale>(new LScale(s)));
-
-				//right
-				chooser.AddObject("Prioritize Scale Right", std::shared_ptr<RScaleSwitch>(new RScaleSwitch(s)));
-				chooser.AddObject("Prioritize Switch Right", std::shared_ptr<RSwitchScale>(new RSwitchScale(s)));
-				chooser.AddObject("Switch Right", std::shared_ptr<RSwitch>(new RSwitch(s)));
-				chooser.AddObject("Scale Right", std::shared_ptr<RScale>(new RScale(s)));
-
-
-
-				chooser.AddObject("TestMechanism",std::shared_ptr<Test_Mechs>(new Test_Mechs()));
-
-
-				chooser.AddObject("Turn-90",std::shared_ptr<Turn>(new Turn(-90)));
-				chooser.AddObject("Turn90",std::shared_ptr<Turn>(new Turn(90)));
-				chooser.AddObject("Auto_Mid_Lswitch", std::shared_ptr<Auto_Mid_LSwitch>(new Auto_Mid_LSwitch()));
-				chooser.AddObject("Auto_Mid_Rswitch", std::shared_ptr<Auto_Mid_RSwitch>(new Auto_Mid_RSwitch()));
-				chooser.AddObject("100", std::shared_ptr<DriveForward>(new DriveForward(100)));
-				//chooser.AddObject("Auto_L_switch", std::shared_ptr<Auto_Left_LScale>(new Auto_Left_LScale()));
-
-				/*chooser.AddObject("75", std::shared_ptr<DriveForward>(new DriveForward(75)));
-				chooser.AddObject("100", std::shared_ptr<DriveForward>(new DriveForward(100)));
-				chooser.AddObject("150", std::shared_ptr<DriveForward>(new DriveForward(150)));
-				chooser.AddObject("175", std::shared_ptr<DriveForward>(new DriveForward(175)));
-				chooser.AddObject("200", std::shared_ptr<DriveForward>(new DriveForward(200)));
-				// chooser.AddObject("Turn -90", std::make_shared<Turn>(-90.));*/
+				chooser.AddObject("Default", std::shared_ptr<Piston_Extend>(new Piston_Extend()));
+				chooser.AddObject("Default", std::shared_ptr<Piston_Retract>(new Piston_Retract()));
+				chooser.AddObject("Default", std::shared_ptr<Piston_Off>(new Piston_Off()));
 
 				//initCommand = chooser.GetSelected();
 
@@ -181,3 +135,4 @@ private:
 };
 
 START_ROBOT_CLASS(Robot)
+
